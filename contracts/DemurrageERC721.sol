@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-// TODO test
 contract DemurrageERC721 is ERC721 {
     event TokenMinted(address _to, uint256 _price, uint256 _tokenId);
     event DemurragePaid(
