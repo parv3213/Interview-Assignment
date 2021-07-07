@@ -38,18 +38,6 @@ contract DemurrageERC721 is ERC721 {
     }
 
     /**
-     * @dev Function to find demurrage been paid until timestamp
-     * @param _tokenId NFT token id for whose demurrage been paid until timestamp
-     */
-    function paidTill(uint256 _tokenId)
-        external
-        view
-        returns (uint256 _paidTill)
-    {
-        _paidTill = demurrageTokens[_tokenId].paidTill;
-    }
-
-    /**
      * @dev Function to mint a NFT token
      * @param _to owner of NFT
      * @param _price price of NFT equivalent to physical asset
