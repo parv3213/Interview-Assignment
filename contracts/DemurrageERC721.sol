@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 // TODO test
 contract DemurrageERC721 is ERC721 {
-    event tokenMinted(address _to, uint256 _price, uint256 _tokenId);
+    event TokenMinted(address _to, uint256 _price, uint256 _tokenId);
     event DemurragePaid(
         uint256 _tokenId,
         uint256 _payTill,
@@ -50,7 +50,7 @@ contract DemurrageERC721 is ERC721 {
         require(_price >= PERCENT_DIVISOR, "Price too low"); // This is done to maintain precision
         demurrageTokens[totalTokens].price = _price;
         demurrageTokens[totalTokens].paidTill = block.timestamp;
-        emit tokenMinted(_to, _price, totalTokens);
+        emit TokenMinted(_to, _price, totalTokens);
     }
 
     /**
