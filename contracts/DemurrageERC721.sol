@@ -63,7 +63,10 @@ contract DemurrageERC721 is ERC721 {
      * - msg.sender must have approve DAI to this contract
      */
     function payDemurrage(uint256 _tokenId, uint256 _payTill) external {
-        _isApprovedOrOwner(msg.sender, _tokenId);
+        require(
+            _isApprovedOrOwner(msg.sender, _tokenId),
+            "Caller is not owner nor approved"
+        );
         require(_payTill > block.timestamp);
         DemurrageToken memory _demurrageToken = demurrageTokens[_tokenId];
         uint256 _prepayDays = (_payTill - _demurrageToken.paidTill) / 86400; // 86400 is number of seconds in one day
