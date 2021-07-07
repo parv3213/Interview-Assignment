@@ -71,8 +71,11 @@ contract DemurrageERC721 is ERC721 {
         uint256 _demurrageFee = (_demurrageToken.price *
             _prepayDays *
             DEMURRAGE_FEE) / PERCENT_DIVISOR;
-        dai.transferFrom(msg.sender, demurrageCollector, _demurrageFee);
         demurrageTokens[_tokenId].paidTill = _payTill;
+        require(
+            dai.transferFrom(msg.sender, demurrageCollector, _demurrageFee),
+            "Token transfer failed"
+        );
         emit DemurragePaid(_tokenId, _payTill, _demurrageFee);
     }
 
