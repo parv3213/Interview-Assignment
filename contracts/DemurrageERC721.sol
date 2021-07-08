@@ -46,7 +46,7 @@ contract DemurrageERC721 is ERC721 {
     function mint(address _to, uint256 _price) external {
         totalTokens++;
         _mint(_to, totalTokens);
-        require(_price >= PERCENT_DIVISOR, "Price too low"); // This is done to maintain precision
+        require(_price/PERCENT_DIVISOR*PERCENT_DIVISOR == _price, "Too high precision"); // This is done to maintain precision
         demurrageTokens[totalTokens].price = _price;
         demurrageTokens[totalTokens].paidTill = block.timestamp;
         emit TokenMinted(_to, _price, totalTokens);
